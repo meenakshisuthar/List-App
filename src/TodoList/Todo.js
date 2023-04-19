@@ -18,14 +18,14 @@ const Todo = () => {
     const [toggleButton, setToggleButton] = useState(false)
 
     // add the items function
-    const addItems = () =>{
-        if(!inputData){
+    function addItems() {
+        if (!inputData) {
             alert("Plz fill the data")
-        }else if(inputData && toggleButton){
+        } else if (inputData && toggleButton) {
             setItems(
                 items.map((curElement) => {
-                    if(curElement.id === isEditItem){
-                        return {...curElement, name : inputData }
+                    if (curElement.id === isEditItem) {
+                        return { ...curElement, name: inputData }
                     }
                     return curElement
                 })
@@ -34,14 +34,14 @@ const Todo = () => {
             setIsEditItem(null)
             setToggleButton(false)
         }
-        
-        else{
-           const myNewInputData = {
-             id: new Date().getTime().toString(),
-             name: inputData
-           }
-           setItems([...items, myNewInputData])
-           setInputData("")
+
+        else {
+            const myNewInputData = {
+                id: new Date().getTime().toString(),
+                name: inputData
+            }
+            setItems([...items, myNewInputData])
+            setInputData("")
         }
     }
     

@@ -47,10 +47,10 @@ const Todo = () => {
     
     // how to edit items
     const editItem = (index) => {
-       const item_todo_edited = items.find((curElement) => {
+       const item_edited = items.find((curElement) => {
         return curElement.id === index
        })
-       setInputData(item_todo_edited.name)
+       setInputData(item_edited.name)
        setIsEditItem(index)
        setToggleButton(true)
     }
@@ -65,7 +65,11 @@ const Todo = () => {
 
     //  remove all the elements
     const removeAll = () =>{
+        if(items.length === 0){
+            alert("Plz fill the data")
+        }else{
         setItems([])
+        }
     }
 
     // adding local storage
@@ -75,8 +79,8 @@ const Todo = () => {
 
   return (
     <>
-     <div className="main-div">
-        <div className="child-div">
+     <div className="main">
+        <div className="child">
             <figure>
                 <img src="./images/todo.svg" alt="todologo"/>
                 <figCaption>Add Your List Here ✌️</figCaption>
@@ -106,8 +110,8 @@ const Todo = () => {
              {/* Remove all button */}
 
             <div className="showItems">
-                <button className="btn effect04" data-sm-link-text="REMOVE ALL" onClick={removeAll}>
-                    <span>CHECK LIST</span>
+                <button className="btn" onClick={removeAll}>
+                    REMOVE ALL
                 </button>
             </div>
         </div>
